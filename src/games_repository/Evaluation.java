@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gamesrepository;
+package games_repository;
 
 /**
  *
  * @author natan
  */
 public enum Evaluation {
-    Ruim, Mediano, Bom, MuitoBom 
+    Ruim, Mediano, Bom, MuitoBom
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gamesrepository;
+package games_repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,10 @@ import java.util.List;
  */
 public class Repository {
     List<Game> games;
-    
+
+    public Repository() {
+        this.games = new ArrayList<Game>();
+    }
     
     public void addGame(Game game){
         this.games.add(game);
@@ -26,7 +29,7 @@ public class Repository {
         List<Game> gamesList = new ArrayList<Game>();
         
         for(Game game : this.games){
-            if(game.getNome().contains(nome))
+            if(game.getNome().toLowerCase().contains(nome.toLowerCase()))
                 gamesList.add(game);
         }
         return gamesList;
@@ -55,5 +58,30 @@ public class Repository {
                 gamesList.add(game);
         }
         return gamesList;
+    }
+    
+    public List<Game> getGamesHarderThan(Difficulty dif){
+        List<Game> gamesList = new ArrayList<Game>();
+        for(Game game : this.games){
+            if( game.getDifficulty().ordinal() > dif.ordinal())
+                gamesList.add(game);
+        }
+        return gamesList;
+    }
+    
+    public List<Game> getGamesEasyerThan(Difficulty dif){
+        List<Game> gamesList = new ArrayList<Game>();
+        for(Game game : this.games){
+            if( game.getDifficulty().ordinal() < dif.ordinal())
+                gamesList.add(game);
+        }
+        return gamesList;
+    }
+    
+    public Game getGameByCod(String cod){
+        for(Game game : this.games)
+            if(game.getCod().equals(cod))
+                return game;
+        return null;
     }
 }

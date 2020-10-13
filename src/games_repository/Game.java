@@ -3,26 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gamesrepository;
+package games_repository;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  *
  * @author natan
  */
-public class Game {
+
+
+public class Game implements Serializable{
     private String cod;
     private String name;
     private float sizeInBytes;
-    private String[] gender;
+    private List<String> genders;
     private Difficulty difficulty;
     private Evaluation evaluation;
     private String description;
 
-    public Game(String cod, String name, float sizeInBytes, String[] gender, Difficulty difficulty, Evaluation evaluation, String description) {
+    public Game(String cod, String name, float sizeInBytes, List<String> genders, Difficulty difficulty, Evaluation evaluation, String description) {
         this.cod = cod;
         this.name = name;
         this.sizeInBytes = sizeInBytes;
-        this.gender = gender;
+        this.genders = genders;
         this.difficulty = difficulty;
         this.evaluation = evaluation;
         this.description = description;
@@ -52,12 +57,12 @@ public class Game {
         this.sizeInBytes = sizeInBytes;
     }
 
-    public String[] getGender() {
-        return gender;
+    public List<String> getGender() {
+        return genders;
     }
 
-    public void setGender(String[] gender) {
-        this.gender = gender;
+    public void setGender(List<String> gender) {
+        this.genders = gender;
     }
 
     public Difficulty getDifficulty() {
@@ -76,12 +81,18 @@ public class Game {
         this.evaluation = evaluation;
     }
 
-    public String getDescricao() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescricao(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
-     
+    public void addGender(String gender){
+        if(!this.genders.contains(gender))
+            this.genders.add(gender);
+    }
+    public boolean removeGender(String gender){
+        return this.genders.remove(gender);
+    }
 }
