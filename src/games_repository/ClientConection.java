@@ -57,6 +57,10 @@ public class ClientConection implements Runnable {
                             Game g = this.repository.getGameByCod(cod);
                             oos.writeObject(g);
                             break;
+                        case "getGamesBySizeSmallerThan":
+                            float maxSize = (float) commandReceived.getObject();
+                            oos.writeObject(this.repository.getGamesBySizeSmallerThan(maxSize));
+                            break;
                     }
                 } catch (IOException ex) {
                     Logger.getLogger(ClientConection.class.getName()).log(Level.SEVERE, null, ex);

@@ -48,6 +48,10 @@ public class Command implements Serializable {
     public static Command getGameByCodCommand(){
         return new Command("getGameByCod", null);
     }
+    public static Command getGameSizeSmallerThanCommand(){
+        return new Command("getGamesBySizeSmallerThan", null);
+    }
+
     @Override
     public boolean equals(Object command) {
         if (command instanceof Command) {
